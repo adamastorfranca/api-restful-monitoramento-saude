@@ -1,0 +1,21 @@
+.container-logo {
+    max-width: 360px;
+    padding: 70px;
+}
+
+.container-logo h1 {
+    color: #6c757d;
+    font-weight: bold;
+}
+.background-logo {
+    max-width: 190px;
+}
+
+.to-color path {
+    fill: #6c757d
+}
+
+.btn-home {
+    width: 200px;
+    color: black;
+}

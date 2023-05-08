@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  hiit-postgresql:
+    image: postgres:14.2
+    volumes:
+      - ~/volumes/hiit/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=hiit
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Mudar123
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
