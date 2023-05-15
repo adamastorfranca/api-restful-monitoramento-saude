@@ -3,3 +3,21 @@ body {
     padding: 0 !important;
 }
 
+.background-logo {
+    color: #6c757d;
+    background-image: url('../src/assets/logo.svg');
+    background-size: cover;
+    opacity: 0.8;
+    fill: #6c757d 
+}
+
+.to-color path {
+    fill: #6c757d
+}
+
+.container-default {
+    max-width: 360px;
+    padding: 70px;
+}
+
+

@@ -7,12 +7,9 @@
     color: #6c757d;
     font-weight: bold;
 }
-.background-logo {
-    max-width: 190px;
-}
 
-.to-color path {
-    fill: #6c757d
+.home-logo {
+    max-width: 190px;
 }
 
 .btn-home {
