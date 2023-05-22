@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "measurements")
-public class Measure {
+@Table(name = "workouts")
+public class Workout {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,31 +31,22 @@ public class Measure {
     @JoinColumn(name = "id_user", nullable = false)
     private User user;
 	
-	@Column(name = "weight")
-	private Float weight;
+	@Column(name = "time")
+	private Long time;
 	
-	@Column(name = "height")
-	private Float height;
+	@Column(name = "duration")
+	private Long duration;
 	
-	@Column(name = "waist")
-	private Float waist;
+	@Column(name = "intensity")
+	private Integer intensity;
 	
-	@Column(name = "neck")
-	private Float neck;
+	@Column(name = "rest")
+	private Integer rest;
 	
-	@Column(name = "imc")
-	private Float imc;
+	@Column(name = "mileage")
+	private Float mileage;
 	
-	@Column(name = "fat_percentage")
-	private Float fatPercentage;
-	
-	@Column(name = "caloric_expenditure")
-	private Float caloricExpenditure;
-	
-	@Column(name = "created_at", nullable = false)
+	@Column(name = "created_at")
 	private LocalDateTime createdAt;
-	
-	@Column(name = "updated_at")
-	private LocalDateTime updatedAt;
 	
 }

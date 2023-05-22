@@ -1,9 +1,9 @@
-import { Button, Navbar } from "reactstrap";
+import { Navbar } from "reactstrap";
 import logo from "../../assets/logo.svg"
-import "./header.css"
 import { useScreenSize } from "../../utils/device-screen-size";
 import { Link } from "react-router-dom";
 import { Paths } from "../../utils/paths";
+import "./header.css"
 
 export const Header = () => {
 
@@ -18,12 +18,12 @@ export const Header = () => {
                 </h2>
             </Link>
             <div>
-                <Button className="btn-outline-dark btn-sm">
+                <Link to={Paths.LOGIN} type="button" className="btn btn-outline-dark  btn-sm ms-2">
                     Entrar
-                </Button>
-                <Button className="btn-dark btn-sm ms-2">
+                </Link>
+                <Link to={Paths.REGISTER} type="button" className="btn btn-dark  btn-sm ms-2" >
                     Cadastre-se
-                </Button>
+                </Link>
             </div>
         </Navbar>
     );
