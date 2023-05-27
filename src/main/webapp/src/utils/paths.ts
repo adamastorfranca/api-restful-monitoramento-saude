@@ -12,4 +12,5 @@ export enum Paths {
     IMC = '/imc',
     FAT_PERCENTAGE = '/fat-percentage',
     CALORIC_EXPENDITURE = '/caloric-expenditure',
+    TABATA = '/workouts/tabata'
 }

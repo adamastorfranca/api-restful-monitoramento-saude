@@ -1,8 +1,6 @@
-import { Button } from "reactstrap";
 import { Header } from "../header/Header";
 import { Link } from "react-router-dom";
 import { Paths } from "../../utils/paths";
-import { useState } from "react";
 
 export const Login = () => {
 
