@@ -26,18 +26,21 @@ export const Workouts = () => {
     return (
         <div>
             <Header isHome={false} />
-            <div className="background-logo to-color container container-default mt-3">
+            <div className="background-logo container container-default mt-3">
                 <div className="text-center">
                     <img src={iconWorkout} alt="workout" className="icon-workout"/>
                     <h1 className="text-white">Treinos intervalados</h1>
                 </div>
-                <div className='container mt-5'>
+                <div className='mt-5'>
                     {workouts?.map((workout, key) => (
-                        <div key={key} >
+                        <div key={key} className="row d-flex align-items-center justify-content-center mt-3">
                             <Link to={`${Paths.WORKOUTS}/${workout.slug}`} type="button" className="btn btn-secondary btn-home">{workout.name}</Link>
                         </div>         
                     ))}
                 </div>
+                <div className="row d-flex align-items-center justify-content-center mt-3">
+                    <Link to={`${Paths.WORKOUTS}`} type="button" className="btn btn-light btn-home">Monte sue treino</Link>
+                </div>    
                 <div className="text-center mt-4">
                     <Link type="button" to={Paths.HOME} className="btn btn-secondary btn-sm ms-2">
                         Voltar
