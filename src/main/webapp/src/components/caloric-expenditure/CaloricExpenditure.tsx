@@ -32,13 +32,13 @@ export const CaloricExpenditure = () => {
 
     return (
         <div>
-            <Header />
+            <Header isHome={false} />
             <div className="background-logo container container-default mt-3">
                 <div className="text-center">
                     <img src={iconCaloricExpenditure} alt="caloric expenditure" className="icon-caloric-expenditure"/>
                     <h1 className="text-white">Gasto calórico basal</h1>
                 </div>
-                <div className="container-fluid mt-4">
+                <div className="container-fluid mt-5">
                     <div className="row p-2">
                         <label className="col-5 text-end">Idade</label>
                         <input className="form-control-sm col-4" type="number" min={5} max={100} required onChange={(e) => {setAge((Number(e.target.value)))}}/>

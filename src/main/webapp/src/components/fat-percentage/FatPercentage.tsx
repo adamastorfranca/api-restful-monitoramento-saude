@@ -31,13 +31,13 @@ export const FatPercentage = () => {
     
     return (
         <div>
-            <Header />
+            <Header isHome={false} />
             <div className="background-logo container container-default mt-3">
                 <div className="text-center">
                     <img src={iconFatPercentage} alt="fat percentage" className="icon-fat-percentage"/>
                     <h1 className="text-white">Percentual de gordura</h1>
                 </div>
-                <div className="container-fluid mt-4">
+                <div className="container-fluid mt-5">
                     <div className="row p-2">
                         <label className="col-5 text-end">Peso</label>
                         <input className="form-control-sm col-4" type="number" placeholder="kg" min={10} max={200} required />

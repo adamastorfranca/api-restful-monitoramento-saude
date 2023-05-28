@@ -46,14 +46,14 @@ export const Stopwatch = () => {
 
   return (
     <div>
-      <Header />
+      <Header isHome={false} />
       <div className="background-logo container container-default font-page mt-3">
         <div className="text-center">
           <img src={iconStopwatch} alt="stopwatch" className="icon-stopwatch"/>
           <h1 className="text-light">Cronômetro</h1>
         </div>
 
-        <div className="container container-time bg-light text-dark rounded text-center fw-bold display-3 strong mt-4">
+        <div className="container container-time bg-light text-dark rounded text-center fw-bold display-3 strong mt-5">
           {Math.floor(timeInSeconds / 3600) > 0 && (
             <>
               <span>{Math.floor(timeInSeconds / 3600).toString().padStart(2, '0')}</span>
@@ -67,7 +67,7 @@ export const Stopwatch = () => {
           <span>{Math.floor(milliseconds / 10).toString().padStart(2, '0')}</span>
         </div>
 
-        <div className="text-center mt-3">
+        <div className="text-center mt-4">
           {!isRunning ? (
             <>
               <Button className="btn btn-secondary btn-sm ms-2" onClick={() => setIsRunning(true)}>

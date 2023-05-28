@@ -12,8 +12,8 @@ import "./home.css"
 export const Home = () => {
 
     return (
-        <>
-            <Header />
+        <div>
+            <Header isHome={true} />
             <div className='container container-logo'>
                 <div className='container' >
                     <ReactSVG src={logo} className="home-logo to-color" />
@@ -54,7 +54,7 @@ export const Home = () => {
                     </Link>
                 </div>
             </div>
-        </>
+        </div>
     );
 
 }

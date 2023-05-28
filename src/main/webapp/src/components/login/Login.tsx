@@ -8,8 +8,8 @@ export const Login = () => {
 
     return (
         <div>
-            <Header />
-            <div className="background-logo to-color container container-default mt-5">
+            <Header isHome={false} />
+            <div className="background-logo to-color container container-default mt-3">
                 <div className="text-center">
                     <img src={iconLogin} alt="login" className="icon-login"/>
                     <h1 className="text-light">Faça seu login</h1>
@@ -17,11 +17,11 @@ export const Login = () => {
                 <div className="container-fluid mt-5">
                     <div className="row p-2">
                         <label className="col col-3 text-end">E-mail</label>
-                        <input className="col-7" type="email" />
+                        <input className="form-control-sm col-7" type="email" />
                     </div>
                     <div className="row p-2">
                         <label className="col-3 text-end">Senha</label>
-                        <input className="col-7" type="password"  />
+                        <input className="form-control-sm col-7" type="password"  />
                     </div>
                 </div>
                 <div className="text-center">

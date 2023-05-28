@@ -32,8 +32,8 @@ export const Register = () => {
 
     return (
         <div>
-            <Header />
-            <div className="background-logo container container-default mt-5">
+            <Header isHome={false} />
+            <div className="background-logo container container-default mt-3">
                 <div className="text-center">
                     <img src={iconRegister} alt="register" className="icon-register"/>
                     <h5 className="text-light">Preencha com suas informações</h5>
@@ -41,23 +41,23 @@ export const Register = () => {
                 <div className="container-fluid mt-5">
                 <div className="row p-2">
                     <label className="col col-5">Nome</label>
-                    <input className="col-7" type="text" value={name} onChange={(e) => setName(e.target.value)} required/>
+                    <input className="form-control-sm col-7" type="text" value={name} onChange={(e) => setName(e.target.value)} required/>
                 </div>
                 <div className="row p-2">
                     <label className="col col-5">Nascimento</label>
-                    <input className="col-7" type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} required/>
+                    <input className="form-control-sm col-7" type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} required/>
                 </div>
                 <div className="row p-2">
                     <label className="col col-5">E-mail</label>
-                    <input className="col-7" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                    <input className="form-control-sm col-7" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                 </div>
                 <div className="row p-2">
                     <label className="col-5">Senha</label>
-                    <input className="col-7" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                    <input className="form-control-sm col-7" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                 </div>
                 <div className="row p-2">
                     <label className="col-5">Repetir senha</label>
-                    <input className="col-7" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
+                    <input className="form-control-sm col-7" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
                 </div>
                 </div>
                 <div className="text-center mt-4">

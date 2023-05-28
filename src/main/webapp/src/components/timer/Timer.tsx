@@ -56,7 +56,7 @@ export const Timer = () => {
 
   return (
     <div>
-      <Header />
+      <Header isHome={false} />
       <div className="background-logo container container-default font-page mt-3">
 
         <div className="text-center">
@@ -64,8 +64,8 @@ export const Timer = () => {
           <h1 className="text-light">Timer</h1>
         </div>
 
-        {!isRunning && (<>
-          <div className="text-center mt-4">
+        {!isRunning ? (
+          <div className="text-center mt-5">
             <input type="number" 
               placeholder="00" 
               min="0" max="23" 
@@ -85,10 +85,8 @@ export const Timer = () => {
               onChange={(e) => setSecond(e.target.value)} 
               className="input-time" /> s
           </div>
-        </>)}
-
-        {isRunning && (
-          <div className="container container-time bg-light text-dark rounded text-center fw-bold display-3 strong mt-4">
+        ) : (
+          <div className="container container-time bg-light text-dark rounded text-center fw-bold display-3 strong mt-5">
             <span>{hourTens}</span>
             <span>{hourUnits}</span>
             <span> : </span>
@@ -100,7 +98,7 @@ export const Timer = () => {
           </div>
         )}
 
-        <div className="text-center mt-3">
+        <div className="text-center mt-4">
           {!isRunning ? (
             <Button className="btn btn-secondary btn-sm ms-2" onClick={handleTimeChange} hidden={hour === '00' && minute === '00' && second === '00'}>
               Iniciar

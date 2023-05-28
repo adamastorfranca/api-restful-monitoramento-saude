@@ -5,12 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adamastor.uniesp.hiit.model.User;
-import com.adamastor.uniesp.hiit.model.dto.CaloricExpenditureRequestDTO;
-import com.adamastor.uniesp.hiit.model.dto.FatPercentageRequestDTO;
-import com.adamastor.uniesp.hiit.model.dto.ImcRequestDTO;
-import com.adamastor.uniesp.hiit.model.dto.ImcResponseDTO;
-import com.adamastor.uniesp.hiit.model.dto.UserPersistDTO;
-import com.adamastor.uniesp.hiit.model.dto.UserResponseDTO;
+import com.adamastor.uniesp.hiit.model.dto.persist.UserPersistDTO;
+import com.adamastor.uniesp.hiit.model.dto.request.CaloricExpenditureRequestDTO;
+import com.adamastor.uniesp.hiit.model.dto.request.FatPercentageRequestDTO;
+import com.adamastor.uniesp.hiit.model.dto.request.ImcRequestDTO;
+import com.adamastor.uniesp.hiit.model.dto.response.ImcResponseDTO;
+import com.adamastor.uniesp.hiit.model.dto.response.UserResponseDTO;
 import com.adamastor.uniesp.hiit.model.enumeration.GenderEnum;
 import com.adamastor.uniesp.hiit.model.enumeration.ImcClassificationEnum;
 import com.adamastor.uniesp.hiit.repository.UserRepository;

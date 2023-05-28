@@ -3,6 +3,10 @@
 }
 
 .icon-workout {
-  max-width: 60px;
+  max-width: 50px;
   margin-bottom: 10px;
+}
+
+.text-justify {
+  text-align: justify;
 }

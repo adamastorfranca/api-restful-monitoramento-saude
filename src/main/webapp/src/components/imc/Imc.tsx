@@ -51,14 +51,14 @@ export const Imc = () => {
 
     return (
         <div>
-            <Header />
+            <Header isHome={false} />
             <div className="background-logo container container-default mt-3">
                 <div className="text-center">
                     <img src={iconImc} alt="balance" className="icon-imc"/>
                     <h1 className="text-white">IMC</h1>
-                    <h5>Índice de massa corporal</h5>
+                    <p className="small">Índice de massa corporal</p>
                 </div>
-                <div className="container-fluid mt-4">
+                <div className="container-fluid mt-5">
                     <div className="row p-2">
                         <label className="col-5 text-end">Peso</label>
                         <input className="form-control-sm col-4" type="number" placeholder="kg" min={10} max={200} required onChange={(e) => {setWeight((Number(e.target.value)))}}/>
