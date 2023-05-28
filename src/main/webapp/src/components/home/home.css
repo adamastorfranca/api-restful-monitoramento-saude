@@ -16,3 +16,35 @@
     width: 200px;
     color: black;
 }
+
+.img-google {
+    max-width: 31px;
+}
+
+.img-facebook {
+    max-width: 45px;
+}
+
+.img-instagram {
+    max-width: 31px;
+}
+
+.img-twitter {
+    max-width: 31px;
+}
+
+.img-google:hover {
+    filter: invert(100%);
+}
+
+.img-facebook:hover {
+    filter: invert(100%);
+}
+
+.img-instagram:hover {
+    filter: invert(100%);
+}
+
+.img-twitter:hover {
+    filter: invert(100%);
+}

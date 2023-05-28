@@ -1,0 +1,5 @@
+export enum IActivityLevel {
+  SEDENTARY = 'SEDENTARY',
+  MODERATELY_ACTIVE = 'MODERATELY_ACTIVE',
+  ACTIVE = 'ACTIVE'
+}

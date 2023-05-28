@@ -46,20 +46,17 @@ public class User {
 	@Column(name = "birth_date", nullable = false)
 	private LocalDate birthDate;
 	
-	@Column(name = "gender", nullable = false)
+	@Column(name = "gender")
 	@Enumerated(EnumType.STRING)
 	private GenderEnum gender;
 	
-	@Column(name = "activity_level", nullable = false)
+	@Column(name = "activity_level")
 	@Enumerated(EnumType.STRING)
 	private ActivityLevelEnum activityLevel;
 	
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Measure> measures;
-    
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Workout> workouts;
-    
+
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Authority> authorities;
  

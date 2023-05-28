@@ -3,6 +3,10 @@ import logo from "../../assets/logo.svg"
 import { Header } from "../header/Header";
 import { Link } from "react-router-dom";
 import { Paths } from "../../utils/paths";
+import google from "../../assets/google.svg"
+import facebook from "../../assets/facebook.svg"
+import twitter from "../../assets/twitter.svg"
+import instagram from "../../assets/instagram.svg"
 import "./home.css"
 
 export const Home = () => {
@@ -33,7 +37,21 @@ export const Home = () => {
                     <Link to={Paths.FAT_PERCENTAGE} type="button" className="btn btn-secondary btn-home">% de gordura</Link>
                 </div>
                 <div className='container mt-4 d-flex align-items-center justify-content-center'>
-                    <Link to={Paths.CALORIC_EXPENDITURE} type="button" className="btn btn-secondary btn-home">Gasto calórico basal</Link>
+                    <Link to={Paths.CALORIC_EXPENDITURE} type="button" className="btn btn-secondary btn-home  mb-2">Gasto calórico basal</Link>
+                </div>
+                <div className="mt-4 ms-4">
+                    <Link to="https://www.google.com">
+                        <img src={google} alt="google" className="img-google ms-2" />
+                    </Link>
+                    <Link to="https://www.facebook.com">
+                        <img src={facebook} alt="facebook" className="img-facebook" />
+                    </Link>
+                    <Link to="https://www.instagram.com">
+                        <img src={instagram} alt="instagram" className="img-instagram" />
+                    </Link>
+                    <Link to="https://www.twitter.com">
+                        <img src={twitter} alt="twitter" className="img-twitter ms-2" />
+                    </Link>
                 </div>
             </div>
         </>

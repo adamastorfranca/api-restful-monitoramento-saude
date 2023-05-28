@@ -3,11 +3,15 @@ import { Home } from "../components/home/Home";
 import { Imc } from "../components/imc/Imc";
 import { Paths } from "../utils/paths";
 import { Login } from "../components/login/Login";
-import { Workout } from "../components/workouts/Workout";
+
 import { Timer } from "../components/timer/Timer";
 import { Stopwatch } from "../components/stopwatch/Stopwatch";
 import { FatPercentage } from "../components/fat-percentage/FatPercentage";
 import { CaloricExpenditure } from "../components/caloric-expenditure/CaloricExpenditure";
+import { Workouts } from "../components/workouts/Workouts";
+import { Register } from "../components/register/Register";
+
+
 
 export const appRoutes = createBrowserRouter([
   {
@@ -15,12 +19,16 @@ export const appRoutes = createBrowserRouter([
     element: <Home />,
   },
   {
+    path: Paths.REGISTER,
+    element: <Register />,
+  },
+  {
     path: Paths.LOGIN,
     element: <Login />,
   },
   {
     path: Paths.WORKOUTS,
-    element: <Workout />,
+    element: <Workouts />,
   },
   {
     path: Paths.TIMER,

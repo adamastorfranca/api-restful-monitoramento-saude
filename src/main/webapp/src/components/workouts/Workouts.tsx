@@ -1,17 +1,17 @@
 import { Header } from "../header/Header";
-import iconWorkout from "../../assets/workout.svg"
-import './workout.css';
+import iconWorkout from "../../assets/workout.svg";
 import { Link } from "react-router-dom";
 import { Paths } from "../../utils/paths";
+import './workout.css';
 
-export const Workout = () => {
+export const Workouts = () => {
 
     return (
         <div>
             <Header />
             <div className="background-logo to-color container container-default mt-5">
                 <div className="text-center">
-                    <img src={iconWorkout} alt="workout" className="icon-imc"/>
+                    <img src={iconWorkout} alt="workout" className="icon-workout"/>
                     <h1 className="text-white">Treinos intervalados</h1>
                 </div>
 

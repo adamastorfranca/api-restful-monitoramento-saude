@@ -7,12 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ActivityLevelEnum {
 	
-	SEDENTARY(1), 
-	LIGHTLY_ACTIVE(2), 
-	MODERATELY_ACTIVE(3), 
-	ACTIVE(4), 
-	VERY_ACTIVE(5);
+	SEDENTARY(1.2), 
+	MODERATELY_ACTIVE(1.35), 
+	ACTIVE(1.55);
 	
-	private Integer value;
+	private Double value;
 	
 }

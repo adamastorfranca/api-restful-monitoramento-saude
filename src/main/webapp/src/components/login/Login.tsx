@@ -1,6 +1,8 @@
 import { Header } from "../header/Header";
 import { Link } from "react-router-dom";
 import { Paths } from "../../utils/paths";
+import iconLogin from "../../assets/login.svg";
+import './login.css';
 
 export const Login = () => {
 
@@ -9,10 +11,11 @@ export const Login = () => {
             <Header />
             <div className="background-logo to-color container container-default mt-5">
                 <div className="text-center">
-                    <h5>Faça seu login</h5>
+                    <img src={iconLogin} alt="login" className="icon-login"/>
+                    <h1 className="text-light">Faça seu login</h1>
                 </div>
-                <div className="container-fluid">
-                    <div className="row mt-4 p-2">
+                <div className="container-fluid mt-5">
+                    <div className="row p-2">
                         <label className="col col-3 text-end">E-mail</label>
                         <input className="col-7" type="email" />
                     </div>
@@ -21,7 +24,10 @@ export const Login = () => {
                         <input className="col-7" type="password"  />
                     </div>
                 </div>
-                <div className="text-center mt-3">
+                <div className="text-center">
+                    <p className="small">Esqueceu sua senha?</p>
+                </div>
+                <div className="text-center mt-4">
                     <Link type="button" to={Paths.HOME} className="btn btn-secondary btn-sm">
                         Entrar
                     </Link>
@@ -29,9 +35,7 @@ export const Login = () => {
                         Voltar
                     </Link>
                 </div>
-                <div className="text-center mt-4">
-                    <p>Esqueceu sua senha?</p>
-                </div>
+
             </div>
         </div>
     );

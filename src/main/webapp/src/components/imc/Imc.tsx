@@ -5,48 +5,47 @@ import { Paths } from "../../utils/paths";
 import { useState } from "react";
 import iconImc from "../../assets/imc.svg"
 import './imc.css';
+import axios from "axios";
+
+interface IResultIMC {
+    result: string,
+    riskComorbidity: string,
+    classification: string
+}
 
 export const Imc = () => {
 
     const [weight, setWeight] = useState<number>(0);
     const [height, setHeight] = useState<number>(0);
-    const [result, setResult] = useState<number | string>(0);
-    const [classification, setClassification] = useState<string>('');
-    const [riskComorbidity, setRiskComorbidity] = useState<string>('');
+    const [result, setResult] = useState<IResultIMC>();
     const [colorResult, setColorResult] = useState('');
 
-    function imcCalculation() {
-        let x = height / 100;  
-        const calculatedResult = weight / (x * x);
-        setResult(calculatedResult.toFixed(1));
-        setClassification(getClassification(calculatedResult)); 
+    function getResult() {
+        const data = { height, weight };
+
+        axios.post<IResultIMC>('http://localhost:8080/users/imc', data)
+            .then(response => {
+                setResult(response.data);
+                setColor(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     }
 
-    function getClassification(imc: number): string {
-        if (imc < 18.5) {
+    function setColor(result: IResultIMC) {
+        if (result.classification === 'Abaixo do peso') {
             setColorResult('bg-info');
-            setRiskComorbidity('Baixo');
-            return 'Abaixo do peso';
-        } else if (imc >= 18.5 && imc < 25) {
+        } else if (result.classification === 'Peso normal') {
             setColorResult('bg-success');
-            setRiskComorbidity('Normal');
-            return 'Peso normal';
-        } else if (imc >= 25 && imc < 30) {
+        } else if (result.classification === 'Sobrepeso') {
             setColorResult('bg-warning');
-            setRiskComorbidity('Aumentado');
-            return 'Sobrepeso';
-        } else if (imc >= 30 && imc < 35) {
+        } else if (result.classification === 'Obesidade grau 1') {
             setColorResult('bg-orange');
-            setRiskComorbidity('Moderado');
-            return 'Obesidade grau 1';
-        } else if (imc >= 35 && imc < 40) {
+        } else if (result.classification === 'Obesidade grau 2') {
             setColorResult('bg-danger');
-            setRiskComorbidity('Grave');
-            return 'Obesidade grau 2';
-        } else {
+        } else if (result.classification === 'Obesidade grau 3') {
             setColorResult('bg-brown');
-            setRiskComorbidity('Muito grave');
-            return 'Obesidade grau 3';
         }
     }
 
@@ -69,17 +68,17 @@ export const Imc = () => {
                         <input className="form-control-sm col-4" type="number" placeholder="cm" min={50} max={250} onChange={(e) => {setHeight((Number(e.target.value)))}}required />
                     </div>
                 </div>
-                {result !== 0 && (
+                {result && (
                     <div className="text-center mt-4 text-dark d-flex align-items-center justify-content-center">
                         <div className={`${colorResult} p-2 rounded fw-bold`}>
-                            <p className="mt-2">Resultado: {result}</p>
-                            <p>Classificação: {classification}</p>
-                            <p>Risco de comorbidade: {riskComorbidity}</p>
+                            <p className="mt-2">Resultado: {result.result}</p>
+                            <p>Classificação: {result.classification}</p>
+                            <p>Risco de comorbidade: {result.riskComorbidity}</p>
                         </div>
                     </div>
                 )}
                 <div className="text-center mt-4">
-                    <Button onClick={imcCalculation} className="btn-secondary btn-sm" disabled={weight === 0 || height === 0}>
+                    <Button onClick={getResult} className="btn-secondary btn-sm" disabled={weight === 0 || height === 0}>
                         Calcular
                     </Button>
                     <Link type="button" to={Paths.HOME} className="btn btn-secondary btn-sm  ms-2">
