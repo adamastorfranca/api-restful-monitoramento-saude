@@ -20,33 +20,40 @@ export const Timer = () => {
   const audio = new Audio(require("../../audio/timer.mp3"));
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout | null = null;
+  
     if (isRunning) {
+      const countdown = (count: number = 0) => {
+        timeoutId = setTimeout(() => {
+          if (count > 0 && isRunning) {
+            setTimeInSeconds(count - 1);
+            countdown(count - 1);
+          } else if (count === 0 && isRunning) {
+            audio.play();
+            handleStop();
+          }
+        }, 1000);
+      };
+  
       countdown(timeInSeconds);
     } else {
-      clearTimeout(timeoutId);
-    }
-  }, [isRunning]);
-  
-  function countdown(contador: number = 0) {
-    const id = setTimeout(() => {
-      if (contador > 0 && isRunning) {
-        setTimeInSeconds(contador - 1);
-        countdown(contador - 1);
-      } else if (contador === 0 && isRunning) {
-        audio.play();
-        handleStop();
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
-    }, 1000);
+    }
   
-    setTimeoutId(id);
-  }
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [isRunning, timeInSeconds]);
   
   const handleStop = () => {
     clearTimeout(timeoutId);
     setTimeoutId(undefined);
     setIsRunning(false);
   };
-  
 
   const handleTimeChange = () => {
     const totalSeconds = parseInt(hour, 10) * 3600 + parseInt(minute, 10) * 60 + parseInt(second, 10);

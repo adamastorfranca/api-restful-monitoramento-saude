@@ -69,8 +69,8 @@ export const Imc = () => {
                     </div>
                 </div>
                 {result && (
-                    <div className="text-center mt-4 text-dark d-flex align-items-center justify-content-center">
-                        <div className={`${colorResult} p-2 rounded fw-bold`}>
+                    <div className="text-center mt-4 text-dark d-flex align-items-center justify-content-center rounded">
+                        <div className={`${colorResult} rounded p-2 fw-bold`}>
                             <p className="mt-2">Resultado: {result.result}</p>
                             <p>Classificação: {result.classification}</p>
                             <p>Risco de comorbidade: {result.riskComorbidity}</p>

@@ -35,10 +35,6 @@ export const Stopwatch = () => {
     };
   }, [isRunning]);
 
-  const handleStop = () => {
-    setIsRunning(false);
-  };
-
   const handleReset = () => {
     setTimeInSeconds(0);
     setMilliseconds(0);
@@ -80,7 +76,7 @@ export const Stopwatch = () => {
               )}
             </>
           ) : (
-            <Button className="btn btn-secondary btn-sm ms-2" onClick={handleStop}>
+            <Button className="btn btn-secondary btn-sm ms-2" onClick={() => setIsRunning(false)}>
               Parar
             </Button>
           )}

@@ -4,6 +4,7 @@ export enum Paths {
     REGISTER = '/register',
     WORKOUTS = '/workouts',
     WORKOUT = '/workouts/:slug',
+    WORKOUT_PERSONALIZED = '/workout/personalized',
     STOPWATCH = '/stopwatch',
     TIMER = '/timer',
     IMC = '/imc',

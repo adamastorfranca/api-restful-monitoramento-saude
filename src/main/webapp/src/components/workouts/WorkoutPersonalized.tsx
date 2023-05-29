@@ -1,18 +1,14 @@
 import { Header } from "../header/Header";
 import iconWorkout from "../../assets/workout.svg";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Paths } from "../../utils/paths";
 import { useEffect, useRef, useState } from "react";
-import { IWorkout } from "../../interfaces/workout-model";
-import axios from "axios";
 import { Button } from "reactstrap";
 import './workout.css';
 
-export const Workout = () => {
+export const WorkoutPersonalized = () => {
 
-    const { slug } = useParams<{ slug: string }>(); 
-    const [workout, setWorkout] = useState<IWorkout>();
-    const [durationInMinutes, setDurationInMinutes] = useState<number>(0);
+    const [heating, setHeating] = useState<number>(0);
     const [timeInSeconds, setTimeInSeconds] = useState<number>(0);
     const [countdown, setCountdown] = useState<number>(0);
     const [highIntensityTime, setHighIntensityTime] = useState<number>(0);
@@ -32,38 +28,24 @@ export const Workout = () => {
     audioDoubleBeep.volume = 0.1;
 
     useEffect(() => {
-        axios.get<IWorkout>('http://localhost:8080/workouts/' + slug)
-            .then(response => {
-                setWorkout(response.data);
-            })  
-            .catch(error => {
-                console.error(error);
-            });
-    }, []);
-
-    useEffect(() => {
-        if (workout && workout.highIntensityTime && workout.restTime && workout.repetitions) {
-            setHighIntensityTime(workout.highIntensityTime);
-            setRestTime(workout.restTime);
-            setRepetitions(workout.repetitions);
-            setCountdown((workout.highIntensityTime + workout.restTime) * workout.repetitions)
-            setDurationInMinutes((((workout.highIntensityTime + workout.restTime) * workout.repetitions) - workout.restTime) / 60);
-        }
-    }, [workout]);
-
-    useEffect(() => {
         let intervalId: NodeJS.Timeout | undefined;
         let startTime: number | null = null;
-        let currentRound = 1;
-        let intensityRound = 1;
+        let currentRound = 0;
+        let intensityRound = 0;
         let timeLeft = highIntensityTime * 1000;
-    
+        let isHeating = true;
+      
         const handleInterval = () => {
             const currentTime = performance.now();
             const elapsedTime = currentTime - (startTime as number);
             const timeRemaining = timeLeft - elapsedTime;
-        
-            if (timeRemaining > 0) {
+      
+            if (isHeating) {
+                timeLeft = heating * 1000;
+                setLabel('Aquecimento');
+                setColor('bg-warning');
+                isHeating = false;
+            } else if (timeRemaining > 0) {
                 setTimeInSeconds(Math.ceil(timeRemaining / 1000));
             } else {
                 if (currentRound % 2 !== 0) {
@@ -78,12 +60,12 @@ export const Workout = () => {
                     setColor('bg-danger');
             
                     intensityRound++;
-
+        
                     if (intensityRound <= repetitions) {
                         setRepetitionsActual(intensityRound);
                     }
                 }
-        
+      
                 currentRound++;
         
                 if (currentRound > (repetitions * 2) - 1) {
@@ -94,19 +76,21 @@ export const Workout = () => {
                 }
             }
         };
-    
+      
         if (isRunning) {
             setRepetitionsActual(currentRound);
             startTime = performance.now();
             intervalId = setInterval(handleInterval, 10);
         }
-    
+      
         return () => {
             if (intervalId) {
                 clearInterval(intervalId);
             }
         };
     }, [isRunning]);
+      
+      
 
     useEffect(() => {
         let intervalId: NodeJS.Timeout | null = null;
@@ -148,13 +132,13 @@ export const Workout = () => {
     const handleInit = () => {
         setIsRunning(true);
         setIsFinished(false);
-        setCountdown(((highIntensityTime + restTime) * repetitions) - restTime);
+        setCountdown((((highIntensityTime + restTime) * repetitions) - restTime) + heating);
     };
 
     const handleStop = () => {
         setIsRunning(false);
         setTimeInSeconds(0);
-        setCountdown(((highIntensityTime + restTime) * repetitions) - restTime);
+        setCountdown((((highIntensityTime + restTime) * repetitions) - restTime) + heating);
         setStopwatch(0);
         setRepetitionsActual(0);
     };
@@ -165,37 +149,32 @@ export const Workout = () => {
             <div className="background-logo container container-default mt-3">
                 <div className="text-center">
                     <img src={iconWorkout} alt="workout" className="icon-workout"/>
-                    <h1 className="text-white">{workout?.name}</h1>
+                    <h1 className="text-white">Treino personalizado</h1>
                 </div>
 
                 {!isRunning ? (
-                    <>
-                        <div className='container mt-5'>
-                            <p className="text-justify">{workout?.description}</p>
+                    <div className="container-fluid mt-4">
+                        <div className="row p-2">
+                            <label className="col-6 text-end mt-1">Aquecimento</label>
+                            <input className="form-control-sm col-3" placeholder="seg" type="number"  min={5} max={600} onChange={(e) => {setHeating((Number(e.target.value)))}}required />
                         </div>
-                        <div className='text-white small mt-4'>
-                            <div className="row">
-                                <p className="col col-6 text-end">Duração: </p>
-                                <p className="col col-6">{durationInMinutes.toFixed(0)} minutos</p>
-                            </div>
-                            <div className="row">
-                                <p className="col col-6 text-end">Intervalos: </p>
-                                <p className="col col-6">{workout?.repetitions}</p>
-                            </div>
-                            <div className="row">
-                                <p className="col col-6 text-end">Alta intensidade: </p>
-                                <p className="col col-6">{workout?.highIntensityTime} segundos</p>
-                            </div>
-                            <div className="row">
-                                <p className="col col-6 text-end">Descanso: </p>
-                                <p className="col col-6">{workout?.restTime} segundos</p>
-                            </div>
+                        <div className="row p-2">
+                            <label className="col-6 text-end mt-1">Alta intensidade</label>
+                            <input className="form-control-sm col-3" placeholder="seg" type="number"  min={5} max={600} onChange={(e) => {setHighIntensityTime((Number(e.target.value)))}}required />
                         </div>
-                    </>
+                        <div className="row p-2">
+                            <label className="col-6 text-end mt-1">Descanso</label>
+                            <input className="form-control-sm col-3" placeholder="seg" type="number" min={5} max={600} onChange={(e) => {setRestTime((Number(e.target.value)))}}required />
+                        </div>
+                        <div className="row p-2">
+                            <label className="col-6 text-end mt-1">Intervalos</label>
+                            <input className="form-control-sm col-3" type="number"  min={2} max={600} required onChange={(e) => {setRepetitions((Number(e.target.value)))}}/>
+                        </div>
+                    </div>
                 ) : (
                     <>
                         {!isFinished ? (
-                            <div className={`${color} text-light rounded text-center mt-5`}>
+                            <div className={`${color} ${label === 'Aquecimento' ? 'text-dark' : 'text-light' } rounded text-center mt-5`}>
                                 <p className="display-6 fw-bold pt-2 mb-1">{label}</p>
                                 <div className="fw-bold display-1 strong pb-2">
                                     <span>{Math.floor((timeInSeconds / 60) % 60).toString().padStart(2, '0')}</span>
@@ -205,8 +184,8 @@ export const Workout = () => {
                             </div>
                         ) : (
                             <div className={`bg-success text-light rounded text-center mt-5`}>
-                                <p className="fw-bold display-6 strong  pt-2 mb-1">Treino finalizado!</p>
-                                <p className="fw-bold display-5 strong  pb-2 mb-1">Parabéns!</p>
+                                <p className="fw-bold display-6 strong  pt-3">Treino finalizado!</p>
+                                <p className="fw-bold display-5 strong  pb-3">Parabéns!</p>
                             </div>
                         )}
                         <div className="bg-light text-dark rounded text-center mt-3">

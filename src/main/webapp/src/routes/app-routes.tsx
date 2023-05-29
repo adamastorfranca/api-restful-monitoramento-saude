@@ -10,6 +10,7 @@ import { CaloricExpenditure } from "../components/caloric-expenditure/CaloricExp
 import { Workouts } from "../components/workouts/Workouts";
 import { Register } from "../components/register/Register";
 import { Workout } from "../components/workouts/Workout";
+import { WorkoutPersonalized } from "../components/workouts/WorkoutPersonalized";
 
 export const appRoutes = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const appRoutes = createBrowserRouter([
   {
     path: Paths.WORKOUT,
     element: <Workout />,
+  },
+  {
+    path: Paths.WORKOUT_PERSONALIZED,
+    element: <WorkoutPersonalized />,
   },
   {
     path: Paths.TIMER,

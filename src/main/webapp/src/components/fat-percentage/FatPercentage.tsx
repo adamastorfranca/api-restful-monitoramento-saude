@@ -71,7 +71,7 @@ export const FatPercentage = () => {
                     </div>
                 </div>
                 {result !== 0 && (
-                    <div className="text-center mt-4 text-dark bg-light rounded">
+                    <div className="text-center mt-4 text-dark bg-light d-flex align-items-center justify-content-center rounded">
                         <div className={`p-2 rounded fw-bold`}>
                             <p className="mt-3">Resultado aproximado: {result.toFixed(1)} %</p>
                         </div>

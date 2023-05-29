@@ -39,7 +39,7 @@ export const Workouts = () => {
                     ))}
                 </div>
                 <div className="row d-flex align-items-center justify-content-center mt-3">
-                    <Link to={`${Paths.WORKOUTS}`} type="button" className="btn btn-light btn-home">Monte sue treino</Link>
+                    <Link to={Paths.WORKOUT_PERSONALIZED} type="button" className="btn btn-light btn-home">Monte seu treino</Link>
                 </div>    
                 <div className="text-center mt-4">
                     <Link type="button" to={Paths.HOME} className="btn btn-secondary btn-sm ms-2">
