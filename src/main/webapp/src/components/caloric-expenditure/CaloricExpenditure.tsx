@@ -40,26 +40,26 @@ export const CaloricExpenditure = () => {
                 </div>
                 <div className="container-fluid mt-5">
                     <div className="row p-2">
-                        <label className="col-5 text-end">Idade</label>
+                        <label className="col-5 text-end mt-1">Idade</label>
                         <input className="form-control-sm col-4" type="number" min={5} max={100} required onChange={(e) => {setAge((Number(e.target.value)))}}/>
                     </div>
                     <div className="row p-2">
-                        <label className="col-5 text-end">Peso</label>
+                        <label className="col-5 text-end mt-1">Peso</label>
                         <input className="form-control-sm col-4" type="number" placeholder="kg" min={10} max={200} required onChange={(e) => {setWeight((Number(e.target.value)))}}/>
                     </div>
                     <div className="row p-2">
-                        <label className="col-5 text-end">Altura</label>
+                        <label className="col-5 text-end mt-1">Altura</label>
                         <input className="form-control-sm col-4" type="number" placeholder="cm" min={50} max={250} onChange={(e) => {setHeight((Number(e.target.value)))}}required />
                     </div>
                     <div className="row p-2">
-                        <label className="col-5 text-end">Gênero</label>
+                        <label className="col-5 text-end mt-1">Gênero</label>
                         <select className="form-control-sm col-4"  onChange={(e) => setGender(e.target.value as IGenre)}>
                             <option value={IGenre.MALE}>Homem</option>
                             <option value={IGenre.FEMALE}>Mulher</option>
                         </select>
                     </div>
                     <div className="row p-2"> 
-                        <label className="col col-5 text-end fs-9">Estado</label>
+                        <label className="col col-5 text-end mt-1 fs-9">Estado</label>
                         <select className="col-4 form-control-sm" onChange={(e) => setActivityLevel(e.target.value as IActivityLevel)}>
                             <option value={IActivityLevel.SEDENTARY}>Sedentário</option>
                             <option value={IActivityLevel.MODERATELY_ACTIVE}>Moderadamente Ativo</option>
@@ -70,7 +70,7 @@ export const CaloricExpenditure = () => {
                 {result !== 0 && (
                     <div className="text-center mt-4 text-dark d-flex align-items-center justify-content-center">
                         <div className={`p-2 rounded fw-bold bg-light`}>
-                            <p className="mt-3">Resultado aproximado: {result} kcal/dia</p>
+                            <p className="mt-3">Resultado aproximado: {result} cal/dia</p>
                         </div>
                     </div>
                 )}

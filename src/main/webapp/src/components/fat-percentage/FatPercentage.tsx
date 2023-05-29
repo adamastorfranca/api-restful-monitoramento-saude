@@ -39,30 +39,30 @@ export const FatPercentage = () => {
                 </div>
                 <div className="container-fluid mt-5">
                     <div className="row p-2">
-                        <label className="col-5 text-end">Peso</label>
+                        <label className="col-5 text-end mt-1">Peso</label>
                         <input className="form-control-sm col-4" type="number" placeholder="kg" min={10} max={200} required />
                     </div>
                     <div className="row p-2">
-                        <label className="col-5 text-end">Altura</label>
+                        <label className="col-5 text-end mt-1">Altura</label>
                         <input className="form-control-sm col-4" type="number" placeholder="cm" min={50} max={250} onChange={(e) => {setHeight((Number(e.target.value)))}}required />
                     </div>
                     <div className="row p-2">
-                        <label className="col-5 text-end">Gênero</label>
+                        <label className="col-5 text-end mt-1">Gênero</label>
                         <select className="form-control-sm col-4" onChange={(e) => setGender(e.target.value as IGenre)}>
                             <option value={IGenre.MALE}>Homem</option>
                             <option value={IGenre.FEMALE}>Mulher</option>
                         </select>
                     </div>
                     <div className="row p-2">
-                        <label className="col col-5 text-end">Pescoço</label>
+                        <label className="col col-5 text-end mt-1">Pescoço</label>
                         <input className="form-control-sm col-4" type="number" placeholder="cm" min={10} max={60} onChange={(e) => setNeck(Number(e.target.value))} required />
                     </div>
                     <div className="row p-2">
-                        <label className="col col-5 text-end">Cintura</label>
+                        <label className="col col-5 text-end mt-1">Cintura</label>
                         <input className="form-control-sm col-4" type="number" placeholder="cm" min={40} max={200} onChange={(e) => setWaist(Number(e.target.value))} required />
                     </div>
                     <div className="row p-2"> 
-                        <label className="col col-5 text-end fs-9">Estado</label>
+                        <label className="col col-5 text-end mt-1 fs-9">Estado</label>
                         <select className="col-4 form-control-sm">
                             <option value={IActivityLevel.SEDENTARY}>Sedentário</option>
                             <option value={IActivityLevel.MODERATELY_ACTIVE}>Moderadamente Ativo</option>

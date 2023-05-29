@@ -60,11 +60,11 @@ export const Imc = () => {
                 </div>
                 <div className="container-fluid mt-5">
                     <div className="row p-2">
-                        <label className="col-5 text-end">Peso</label>
+                        <label className="col-5 text-end mt-1">Peso</label>
                         <input className="form-control-sm col-4" type="number" placeholder="kg" min={10} max={200} required onChange={(e) => {setWeight((Number(e.target.value)))}}/>
                     </div>
                     <div className="row p-2">
-                        <label className="col-5 text-end">Altura</label>
+                        <label className="col-5 text-end mt-1">Altura</label>
                         <input className="form-control-sm col-4" type="number" placeholder="cm" min={50} max={250} onChange={(e) => {setHeight((Number(e.target.value)))}}required />
                     </div>
                 </div>

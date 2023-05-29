@@ -61,13 +61,18 @@ public class UserService {
 
 	}
 	
-    public Double caloricExpenditureCalculation(CaloricExpenditureRequestDTO request) {
-    	
-    	double parameter = GenderEnum.MALE.equals(request.getGender()) ? 5 : -161;
-    	
-        double basalMetabolicRate = 10 * request.getWeight() + 6.25 * request.getHeight() - 5 * request.getAge() + parameter;
+	public Double caloricExpenditureCalculation(CaloricExpenditureRequestDTO request) {
+		
+	    double basalMetabolicRate;
+	    
+	    if (GenderEnum.MALE.equals(request.getGender())) {
+	        basalMetabolicRate = 10 * request.getWeight() + 6.25 * request.getHeight() - 5 * request.getAge() + 5;
+	    } else {
+	        basalMetabolicRate = 10 * request.getWeight() + 6.25 * request.getHeight() - 5 * request.getAge() - 161;
+	    }
+	    
+	    return basalMetabolicRate;
+	    
+	}
 
-        return basalMetabolicRate * request.getActivityLevel().getValue();
-        
-    }
 }

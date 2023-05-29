@@ -29,6 +29,9 @@ public class Workout {
 	
 	@Column(name = "description", columnDefinition = "TEXT")
 	private String description;
+	
+	@Column(name = "heating")
+	private Long heating;
 
 	@Column(name = "high_intensity_time")
 	private Long highIntensityTime;

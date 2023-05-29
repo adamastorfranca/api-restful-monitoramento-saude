@@ -184,8 +184,8 @@ export const WorkoutPersonalized = () => {
                             </div>
                         ) : (
                             <div className={`bg-success text-light rounded text-center mt-5`}>
-                                <p className="fw-bold display-6 strong  pt-3">Treino finalizado!</p>
-                                <p className="fw-bold display-5 strong  pb-3">Parabéns!</p>
+                                <p className="fw-bold display-6 strong pt-3">Treino finalizado!</p>
+                                <p className="fw-bold display-5 strong pb-3">Parabéns!</p>
                             </div>
                         )}
                         <div className="bg-light text-dark rounded text-center mt-3">
